@@ -5,7 +5,7 @@ export default {
     },
     autoStart: false,
     instance: {
-      dbName: 'cdp-node-backend-template'
+      dbName: 'aqie-data-service-backend'
     }
   },
   mongoURLEnvName: 'MONGO_URI',
