@@ -1,6 +1,7 @@
 // import { proxyFetch } from '~/src/api/common/helpers/proxy.js'
 import { fetchData } from '~/src/api/location/helpers/fetch-data.js'
 import { getNearestLocation } from '~/src/api/location/helpers/get-nearest-location.js'
+// import querystring from 'querystring'
 // import { config } from '~/src/config/index.js'
 
 async function fetchmonitoringstation(request) {
@@ -11,9 +12,15 @@ async function fetchmonitoringstation(request) {
   ) {
     // const url = config.get('OSPlaceApiUrl')
     const locationType = 'uk-location'
-    const locationNameOrPostcode = request.params.userLocation //= 'DA16 1LT'//'London'
+    const requestdata = request.params.userLocation //= 'DA16 1LT'//'London'
     // const userLocation = request.params.userLocation.toUpperCase() //= 'DA16 1LT'//'LONDON'
-    const miles = 8 * 1000
+    const paramlocationresult = requestdata.split('&')
+    const locationNameOrPostcode = paramlocationresult[0]
+    const requestmiles = paramlocationresult[1]
+    const milesparamresult = requestmiles.slice(6, 8)
+    const miles = milesparamresult * 1000
+
+    // const querystringresult = querystring.parse(paramlocationresult)
 
     const { getOSPlaces, getMeasurements } = await fetchData(
       locationType,
