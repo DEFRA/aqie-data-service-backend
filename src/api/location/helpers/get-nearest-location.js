@@ -27,7 +27,7 @@ function getNearestLocation(
     { latitude: latlon.lat, longitude: latlon.lon },
     measurementsCoordinates
   )
-  const nearestMeasurementsPoints = orderByDistanceMeasurements.slice(0, 10)
+  const nearestMeasurementsPoints = orderByDistanceMeasurements.slice(0, 40)
   const pointsToDisplay = nearestMeasurementsPoints.filter((p) =>
     pointsInRange(latlon, p, miles)
   )
