@@ -84,8 +84,9 @@ function getNearestLocation(
     })
     if (Object.keys(newpollutants).length !== 0) {
       acc.push({
-        area: curr.area,
-        areaType: curr.areaType,
+        region: curr.area,
+        siteType: curr.areaType,
+        localSiteID: curr.localSiteID,
         location: {
           type: curr.location.type,
           coordinates: [

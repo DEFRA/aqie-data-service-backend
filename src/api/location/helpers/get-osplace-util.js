@@ -15,7 +15,7 @@ async function fetchmonitoringstation(request) {
     const requestdata = request.params.userLocation //= 'DA16 1LT'//'London'
     // const userLocation = request.params.userLocation.toUpperCase() //= 'DA16 1LT'//'LONDON'
     const paramlocationresult = requestdata.split('&')
-    const locationNameOrPostcode = paramlocationresult[0]
+    const locationNameOrPostcode = paramlocationresult[0] // 'London Apprentice'
     const requestmiles = paramlocationresult[1]
     const milesparamresult = requestmiles.slice(6, 8)
     const miles = milesparamresult * 1000

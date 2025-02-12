@@ -15,7 +15,17 @@ async function fetchData(locationType, userLocation) {
   const logger = createLogger()
 
   const OSPlaceApiUrl = config.get('OSPlaceApiUrl')
-  const osNamesApiUrlFull = OSPlaceApiUrl + userLocation
+  // const osNamesApiUrlFull = OSPlaceApiUrl + userLocation
+  const osNamesApiUrlFull = `${OSPlaceApiUrl}${encodeURIComponent(
+    userLocation
+  )}`
+  // const symbolsArr = ['%', '$', '&', '#', '!', '¬', '`']
+  // const shouldCallApi = symbolsArr.some((symbol) =>
+  //   userLocation.includes(symbol)
+  // )
+  // logger.info(
+  //   `osPlace data requested osNamesApiUrlFull: ${osNamesApiUrlFull}`
+  // )
   const measurementsAPIurl = config.get('measurementsApiUrl')
   const [errorOSPlace, getOSPlaces] = await catchFetchError(
     osNamesApiUrlFull,
