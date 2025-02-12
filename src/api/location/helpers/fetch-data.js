@@ -19,13 +19,13 @@ async function fetchData(locationType, userLocation) {
   const osNamesApiUrlFull = `${OSPlaceApiUrl}${encodeURIComponent(
     userLocation
   )}`
-  const symbolsArr = ['%', '$', '&', '#', '!', '¬', '`']
-  const shouldCallApi = symbolsArr.some((symbol) =>
-    userLocation.includes(symbol)
-  )
-  logger.info(
-    `osPlace data requested osNamesApiUrlFull: ${osNamesApiUrlFull}`
-  )
+  // const symbolsArr = ['%', '$', '&', '#', '!', '¬', '`']
+  // const shouldCallApi = symbolsArr.some((symbol) =>
+  //   userLocation.includes(symbol)
+  // )
+  // logger.info(
+  //   `osPlace data requested osNamesApiUrlFull: ${osNamesApiUrlFull}`
+  // )
   const measurementsAPIurl = config.get('measurementsApiUrl')
   const [errorOSPlace, getOSPlaces] = await catchFetchError(
     osNamesApiUrlFull,
