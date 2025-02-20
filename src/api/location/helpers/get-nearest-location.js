@@ -44,6 +44,7 @@ function getNearestLocation(
   // TODO select and filter locations and pollutants which are not null or don't have exceptions
   const nearestLocationsRange = nearestLocationsRangeCal.reduce((acc, curr) => {
     const newpollutants = []
+    let areaType
     const getDistance =
       geolib.getDistance(
         { latitude: latlon.lat, longitude: latlon.lon },
@@ -52,6 +53,8 @@ function getNearestLocation(
           longitude: curr.location.coordinates[1]
         }
       ) * 0.000621371192
+    areaType = curr.areaType.split(' ')
+    areaType = areaType[1] + ' ' + areaType[0]
     Object.keys(curr.pollutants).forEach((pollutant) => {
       const pollutantname = pollutant
       // const polValue = curr.pollutants[pollutant].value
@@ -85,7 +88,7 @@ function getNearestLocation(
     if (Object.keys(newpollutants).length !== 0) {
       acc.push({
         region: curr.area,
-        siteType: curr.areaType,
+        siteType: areaType,
         localSiteID: curr.localSiteID,
         location: {
           type: curr.location.type,
